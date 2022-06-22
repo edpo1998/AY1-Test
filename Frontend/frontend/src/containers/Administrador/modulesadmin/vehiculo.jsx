@@ -5,6 +5,7 @@ import { Switch, Route } from 'react-router-dom';
 import DefaultAction from './modules/DefaultAction';
 import ListVehiculo from './modules/Vehiculo/listVehiculo';
 import AddVehiculo from './modules/Vehiculo/addVehiculo';
+import Message from './Message';
 
 const Vehiculo = () => {
   const [statemessage ,setStatatemessage] = useState({
