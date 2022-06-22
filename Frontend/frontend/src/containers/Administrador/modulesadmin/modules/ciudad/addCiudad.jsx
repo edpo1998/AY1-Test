@@ -2,14 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 import FetchData from "../api/Api";
 
-const AddHotel = ({ handleMessage }) => {
+const AddCiudad = ({ handleMessage }) => {
   // Values
   const [form, setForm] = useState({
     name: "",
     pais: "",
-    ciudad: "",
-    correo: "",
-    password: "",
   });
   const [dataComboBox, setDataComboBox] = useState({});
 
@@ -54,7 +51,7 @@ const AddHotel = ({ handleMessage }) => {
 
   return (
     <>
-      <h2>Agregar Hotel</h2>
+      <h2>Agregar Ciudad</h2>
       <div className="containeroption__form">
         {Object.keys(dataComboBox).length > 0 ? (
           <Form className="container-fluid" onSubmit={EntryRegister}>
@@ -62,18 +59,7 @@ const AddHotel = ({ handleMessage }) => {
               <Label>Nombre</Label>
               <Input name="name" onChange={handleChange}></Input>
             </FormGroup>
-            <FormGroup>
-              <Label>Correo</Label>
-              <Input name="correo" type="email" onChange={handleChange}></Input>
-            </FormGroup>
-            <FormGroup>
-              <Label>Contraseña</Label>
-              <Input
-                name="password"
-                type="password"
-                onChange={handleChange}
-              ></Input>
-            </FormGroup>
+
             <FormGroup>
               <Label>Pais</Label>
               <select
@@ -82,22 +68,6 @@ const AddHotel = ({ handleMessage }) => {
                 onChange={handleChangeCbx}
               >
                 <option value="">Seleccione el pais </option>
-                {dataComboBox["roles"].map((tipo) => (
-                  <option key={tipo.id} value={tipo.id}>
-                    {tipo.name}
-                  </option>
-                ))}
-              </select>
-            </FormGroup>
-
-            <FormGroup>
-              <Label>Ciudad</Label>
-              <select
-                className="form-select"
-                name="rol"
-                onChange={handleChangeCbx}
-              >
-                <option value="">Seleccione la ciudad </option>
                 {dataComboBox["roles"].map((tipo) => (
                   <option key={tipo.id} value={tipo.id}>
                     {tipo.name}
@@ -117,4 +87,4 @@ const AddHotel = ({ handleMessage }) => {
     </>
   );
 };
-export default AddHotel;
+export default AddCiudad;

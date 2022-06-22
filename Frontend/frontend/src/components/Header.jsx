@@ -52,30 +52,6 @@ const Header = props => {
           }
         </div>
         <ul className='nav-conf'>
-          {
-            hasUser ?
-            <li>
-              <Link to="/empleado">
-                Reservar Hotel 
-              </Link>
-            </li>:""
-          }
-          {
-            hasUser ?
-            <li>
-              <Link to="/empleado">
-                Reservar Auto  
-              </Link>
-            </li>:""
-          }
-          {
-            hasUser ?
-            <li>
-              <Link to="/empleado">
-                Reservar Vuelo  
-              </Link>
-            </li>:""
-          }
           {hasUser ? 
             <li><a href="/" onClick={handleLogout}>Cerrar Sesión</a></li>
             :

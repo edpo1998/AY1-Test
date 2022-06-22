@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 import FetchData from "../api/Api";
 
-const AddHotel = ({ handleMessage }) => {
-  // Values
+const AddAero = ({ handleMessage }) => {
   const [form, setForm] = useState({
     name: "",
     pais: "",
@@ -54,7 +53,7 @@ const AddHotel = ({ handleMessage }) => {
 
   return (
     <>
-      <h2>Agregar Hotel</h2>
+      <h2>Agregar Aereolinea</h2>
       <div className="containeroption__form">
         {Object.keys(dataComboBox).length > 0 ? (
           <Form className="container-fluid" onSubmit={EntryRegister}>
@@ -117,4 +116,4 @@ const AddHotel = ({ handleMessage }) => {
     </>
   );
 };
-export default AddHotel;
+export default AddAero;

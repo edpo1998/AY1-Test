@@ -77,13 +77,14 @@ const Login = (props) => {
                 placeholder="Contraseña"
                 onChange={handleInput}
               />
-              <select name="rol" id="rol" className="form-control mt-2">
-                <option value="ds"> Seleccione Rol</option>
-                <option value="volvo">Admin</option>
-                <option value="saab">Turista</option>
-                <option value="fiat">Hotel</option>
-                <option value="audi5">Autos</option>
-                <option value="audi5">Vuelos</option>
+            
+              <select name="rol" id="rol" className="form-select mt-2" onChange={handleInput} required>
+                <option value="" selected> - Seleccione Rol - </option>
+                <option value="admin">Administrador</option>
+                <option value="turista">Usuario Turista</option>
+                <option value="hotel">Hotel</option>
+                <option value="auto">Concesionario</option>
+                <option value="aero">Aereolinea</option>
               </select>
               <button className="btn btn-secondary btnlogin btn-block mt-5">
                 Iniciar sesión

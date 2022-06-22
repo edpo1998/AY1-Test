@@ -1,146 +1,129 @@
-import React,{useState,useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 import {
   Button,
   Form,
   FormGroup,
   Input,
-  Modal, ModalHeader, ModalBody, ModalFooter,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
   Label,
-  } from 'reactstrap'
-import FetchData from '../api/Api';
+} from "reactstrap";
+import FetchData from "../api/Api";
 
-const AddVehiculo = ({handleMessage}) => {
+const AddVehiculo = ({ handleMessage }) => {
+  const [form, setForm] = useState({
+    name: "",
+    pais: "",
+    ciudad: "",
+    correo: "",
+    password: "",
+  });
+  const [dataComboBox, setDataComboBox] = useState({});
 
-  // Values 
-  const [form,setForm] = useState({
-    badgenumber:'',
-    modelo:'',
-    brand:'',
-    typevehicle:'',
-    typepropietary:'',
-    description:'',
-  })
-
-  const [dataComboBox, setDataComboBox] =  useState({})
-
-  const EntryRegister =async (e) =>{
-    try{
-      const url = "api/vehicles/vehicle/"
-      const data = new FetchData()
-      await data.request(url,"POST",form)
+  const EntryRegister = async (e) => {
+    try {
+      const url = "api/team/users/";
+      const data = new FetchData();
+      await data.request(url, "POST", form);
       handleMessage({
-        header:'🟢 Estado del registro',
-        message:'Vehiculo registrado con exito',
-        state:true
-      })
-    }catch(e){
+        header: "🟢 Estado del registro",
+        message: "Usuario registrado con exito",
+        state: true,
+      });
+    } catch (e) {
       handleMessage({
-        header:'🔴 Estado del registro',
-        message:'Verifica los campos del registro',
-        state:true
+        header: "🔴 Estado del registro",
+        message: "Verifica los campos del registro",
+        state: true,
       });
     }
-    
-  }
+  };
 
   const handleChange = (e) => {
     setForm({
-        ...form,
-        [e.target.name]: e.target.value,
+      ...form,
+      [e.target.name]: e.target.value,
     });
-  }
+  };
 
+  const handleChangeCbx = (e) => (form[e.target.name] = e.target.value);
 
-  const handleChangeCbx = (e) => form[e.target.name]= e.target.value
-
-  useEffect( () => {
+  useEffect(() => {
     const getResponse = async () => {
-    const data = new FetchData()
-      const response =  ({
-        modelos: await  data.request( "api/vehicles/modelo/","GET"),
-        marcas: await  data.request( "api/vehicles/brand/","GET"),
-        tipos: await  data.request( "api/vehicles/typevehicle/","GET"),
-        propietarios: await  data.request( "api/vehicles/typepropietary/","GET"),
-      })
-      return response
-    }
-    getResponse()
-    .then(response => setDataComboBox(response))
-    
+      const data = new FetchData();
+      const response = {
+        roles: await await data.request("api/team/roles/", "GET"),
+      };
+      return response;
+    };
+    getResponse().then((response) => setDataComboBox(response));
   }, []);
 
-  return(
-  <>
-    <h2>Ingresar Vehiculo</h2>
-    <div className='containeroption__form'>
-      {
-      Object.keys(dataComboBox).length>0 ?
-        <Form className='container-fluid' onSubmit={EntryRegister}>
-          <FormGroup>
-            <Label>Placa</Label>
-            <Input name="badgenumber" onChange={handleChange}></Input> 
-          </FormGroup>
-          <FormGroup>
-            <Label>Modelo</Label>
-            <select className="form-select" name="modelo" onChange={handleChangeCbx} >
-              <option value="">Seleccione el nivel</option>
-              {
-                dataComboBox["modelos"].map((marca)=>
-                  <option key={marca.id} value={marca.id}>{marca.name}</option>
-                )
-              }
-            </select>
-          </FormGroup>
-          <FormGroup>
-            <Label>Marca</Label>
-            <select className="form-select" name="brand" onChange={handleChangeCbx} >
-              <option value="">Seleccione el nivel</option>
-              {
-                dataComboBox["marcas"].map((marca)=>
-                  <option key={marca.id} value={marca.id}>{marca.name}</option>
-                )
-              }
-            </select>
-          </FormGroup>
-          <FormGroup>
-            <Label>Tipo</Label>
-            <select className="form-select" name="typevehicle" onChange={handleChangeCbx} >
-              <option value="">Seleccione el nivel</option>
-              {
-                dataComboBox["tipos"].map((marca)=>
-                  <option key={marca.id} value={marca.id}>{marca.name}</option>
-                )
-              }
-            </select>
-          </FormGroup>
-          <FormGroup>
-            <Label>Propietarios</Label>
-            <select className="form-select" name="typepropietary" onChange={handleChangeCbx} >
-              <option value="">Seleccione el nivel</option>
-              {
-                dataComboBox["propietarios"].map((marca)=>
-                  <option key={marca.id} value={marca.id}>{marca.name}</option>
-                )
-              }
-            </select>
-          </FormGroup>
-          <FormGroup>
-            <Label>Descripcion</Label>
-            <Input
-              name="description"
-              type="textarea"
-              style={{resize:'none'}}
-              maxLength={100}
-              onChange={handleChange}
-            />
-          </FormGroup>  
-          <Button className="btn-lg" onClick={EntryRegister}>Registrar</Button>
-        </Form>:
-      <h1>Loading...</h1>
-      }
-    </div>
-  </>
+  return (
+    <>
+      <h2>Agregar Concesionaria</h2>
+      <div className="containeroption__form">
+        {Object.keys(dataComboBox).length > 0 ? (
+          <Form className="container-fluid" onSubmit={EntryRegister}>
+            <FormGroup>
+              <Label>Nombre</Label>
+              <Input name="name" onChange={handleChange}></Input>
+            </FormGroup>
+            <FormGroup>
+              <Label>Correo</Label>
+              <Input name="correo" type="email" onChange={handleChange}></Input>
+            </FormGroup>
+            <FormGroup>
+              <Label>Contraseña</Label>
+              <Input
+                name="password"
+                type="password"
+                onChange={handleChange}
+              ></Input>
+            </FormGroup>
+            <FormGroup>
+              <Label>Pais</Label>
+              <select
+                className="form-select"
+                name="rol"
+                onChange={handleChangeCbx}
+              >
+                <option value="">Seleccione el pais </option>
+                {dataComboBox["roles"].map((tipo) => (
+                  <option key={tipo.id} value={tipo.id}>
+                    {tipo.name}
+                  </option>
+                ))}
+              </select>
+            </FormGroup>
 
-);
-}
+            <FormGroup>
+              <Label>Ciudad</Label>
+              <select
+                className="form-select"
+                name="rol"
+                onChange={handleChangeCbx}
+              >
+                <option value="">Seleccione la ciudad </option>
+                {dataComboBox["roles"].map((tipo) => (
+                  <option key={tipo.id} value={tipo.id}>
+                    {tipo.name}
+                  </option>
+                ))}
+              </select>
+            </FormGroup>
+
+            <Button className="btn-lg" onClick={EntryRegister}>
+              Registrar
+            </Button>
+          </Form>
+        ) : (
+          <h1>Loading...</h1>
+        )}
+      </div>
+    </>
+  );
+};
 export default AddVehiculo;

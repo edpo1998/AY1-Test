@@ -12,6 +12,7 @@ async function callApi(endpoint, options = {}) {
   console.log(BASE_URL)
   const response = await fetch(url, options);
   const data = await response.json();
+  console.log(data)
   return data;
 }
 

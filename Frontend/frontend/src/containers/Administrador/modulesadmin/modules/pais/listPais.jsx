@@ -2,7 +2,7 @@ import { Table, Button } from "reactstrap";
 import { useEffect, useState } from "react";
 import FetchData from "../api/Api";
 
-const ListVehiculo = () => {
+const ListPais = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const ListVehiculo = () => {
 
   return (
     <>
-      <h2>Lista de Concesionarias</h2>
+    <h2>Lista de Paises</h2>
       {data.length > 0 ? (
         <div className="containeroption__form">
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
@@ -48,10 +48,6 @@ const ListVehiculo = () => {
                   <tr>
                     <th style={style.th}>#</th>
                     <th style={style.th}>Nombre</th>
-                    <th style={style.th}>Pais</th>
-                    <th style={style.th}>Ciudad</th>
-                    <th style={style.th}>Correo</th>
-
                   </tr>
                 </thead>
                 <tbody>
@@ -59,9 +55,6 @@ const ListVehiculo = () => {
                     <tr key={registro.id}>
                       <th scope="row">{registro.id}</th>
                       <td>{registro.badgenumber}</td>
-                      <td>{registro.modelo}</td>
-                      <td>{registro.brand}</td>
-                      <td>{registro.typevehicle}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -75,4 +68,4 @@ const ListVehiculo = () => {
     </>
   );
 };
-export default ListVehiculo;
+export default ListPais;

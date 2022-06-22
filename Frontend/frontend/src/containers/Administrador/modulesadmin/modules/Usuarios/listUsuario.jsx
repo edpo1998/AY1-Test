@@ -1,81 +1,77 @@
-import {
-    Table,
-    Button
-    } from 'reactstrap'
-  import { useEffect,useState } from 'react';
-  import FetchData from '../api/Api';
-  
-  const ListUsuario = ({handleMessage}) => {
-    const [data,setData] = useState([])
+import { Table, Button } from "reactstrap";
+import { useEffect, useState } from "react";
+import FetchData from "../api/Api";
 
-    useEffect(() => {
-        const getResponse = async () => {
-          const url = "api/team/users/"
-          const data = new FetchData()
-          const datos = await data.request(url,"GET")
-          return datos
-        }
-        getResponse()
-        .then(datos=> setData(datos))
-        .catch(error=>setData([]))
-      },[]);
-   
-    const deleteRegister = (e) =>{
-        const requestDelete = async () => {
-            const url = "api/team/users/"+e.target.value+"/"
-            const data = new FetchData()
-            const datos = await data.requestmessage(url,"DELETE")
-            return datos
-          }
-          requestDelete()
-          .then(datos=> handleMessage({
-            header:'🟢 Estado del registro',
-            message:`Usuario eliminado con exito`,
-            state:true
-          }))
-          .catch(error=> handleMessage({
-            header:'🔴 Estado del registro',
-            message:`${error}`,
-            state:true
-          }))
-    }
+const ListUsuario = () => {
+  const [data, setData] = useState([]);
 
-    return(
+  useEffect(() => {
+    const getResponse = async () => {
+      const url = "api/vehicles/vehicle/";
+      const data = new FetchData();
+      const datos = await data.request(url, "GET");
+      setData(datos);
+    };
+    getResponse();
+  }, []);
+
+  const style = {
+    table: {
+      width: "100%",
+      display: "table",
+      borderSpacing: 0,
+      borderCollapse: "separate",
+    },
+    th: {
+      top: 0,
+      left: 0,
+      zIndex: 10,
+      position: "sticky",
+      backgroundColor: "#fff",
+    },
+  };
+
+  return (
     <>
-     {
-      data.length>0?
-      <div className='containeroption__form'>
-        <Table borderless>
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>Email</th>
-                <th>Usuario</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Rol</th>
-            </tr>
-            </thead>
-            <tbody>
-            {
-                data.map(registro =>(
+    <h2>Lista de Turistas</h2>
+      {data.length > 0 ? (
+        <div className="containeroption__form">
+          <div className="table-wrapper-scroll-y my-custom-scrollbar">
+            <div
+              style={{
+                maxHeight: "500px",
+                overflowY: "auto",
+              }}
+            >
+              <Table bordered height="200" style={style.table}>
+                <thead>
+                  <tr>
+                    <th style={style.th}>#</th>
+                    <th style={style.th}>Nombre</th>
+                    <th style={style.th}>Usuario</th>
+                    <th style={style.th}>Fecha</th>
+                    <th style={style.th}>Correo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.map((registro) => (
                     <tr key={registro.id}>
-                        <th scope="row" >{registro.id}</th>
-                        <td>{registro.email}</td>
-                        <td>{registro.username}</td>
-                        <td>{registro.name}</td>
-                        <td >{registro.surname}</td>
-                        <td >{registro.rol===1?"👮🏽‍♂️":"👷🏽‍♀️"}</td>
-                        <td><Button value={registro.id} className="btn-ls bg-danger" onClick={deleteRegister}>Delete</Button></td>
+                      <th scope="row">{registro.id}</th>
+                      <td>{registro.badgenumber}</td>
+                      <td>{registro.modelo}</td>
+                      <td>{registro.brand}</td>
+                      <td>{registro.typevehicle}</td>
                     </tr>
-                ))
-            }
-            </tbody>
-        </Table>
-      </div>:
-      <h1>..Loading</h1>
-    }  
+                  ))}
+                </tbody>
+              </Table>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <h1>..Loading</h1>
+      )}
     </>
   );
-  }
-  export default ListUsuario;
+};
+export default ListUsuario;

@@ -1,8 +1,8 @@
 import React,{useState} from 'react';
 import { Switch, Route } from 'react-router-dom';
 import DefaultAction from './modules/DefaultAction';
-import ListVuelo from './modules/Vuelo/listVuelo';
-import AddVuelo from './modules/Vuelo/addVuelo';
+import ListVuelo from './modules/Aereo/listAereo';
+import AddVuelo from './modules/Aereo/addAereo';
 import Message from './Message';
 
 const Parqueos = () => {

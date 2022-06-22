@@ -42,7 +42,7 @@ export const sidebarItems = [
       itemId: '/admin/hotel',
       subNav: [
         {
-          title: 'Abrir ',
+          title: 'Crear ',
           itemId: '/admin/hotel/add',
         },
         {
@@ -62,6 +62,34 @@ export const sidebarItems = [
         {
           title: 'Listar',
           itemId: '/admin/vehiculos/list',
+        }
+      ],
+    },
+    {
+      title: '🗾 Pais',
+      itemId: '/admin/pais',
+      subNav: [
+        {
+          title: 'Crear ',
+          itemId: '/admin/pais/add',
+        },
+        {
+          title: 'Listar',
+          itemId: '/admin/pais/list',
+        }
+      ],
+    },
+    {
+      title: '🌆 Ciudad',
+      itemId: '/admin/ciudad',
+      subNav: [
+        {
+          title: 'Crear ',
+          itemId: '/admin/ciudad/add',
+        },
+        {
+          title: 'Listar',
+          itemId: '/admin/ciudad/list',
         }
       ],
     },
