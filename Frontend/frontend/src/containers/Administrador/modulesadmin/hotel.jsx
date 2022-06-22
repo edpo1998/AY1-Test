@@ -1,22 +1,38 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Switch, Route } from 'react-router-dom';
 import DefaultAction from './modules/DefaultAction';
-import addHotel from './modules/Hotel/addhotel';
-import listHotel from './modules/Hotel/listhotel';
+import Listhotel from './modules/Hotel/listhotel';
+import Addhotel from './modules/Hotel/addhotel';
+import Message from './Message';
 
-const Roles = () => (
+const hotels = () => {
+  const [statemessage ,setStatatemessage] = useState({
+    header:'',
+    message:'',
+    state:false
+  });
+  
+  const handleMessage = (obj) => {
+    setStatatemessage(obj)
+  }
+
+  return(
   <div className='containeroption'>
+    <Message statemessage={statemessage} handleMessage={handleMessage}/>
     <Switch>
         <Route 
             exact path="/admin/hotel/add" 
-            component={addHotel} />
+            component={()=><Addhotel handleMessage={handleMessage} />} 
+        />
         <Route 
-            exact path="/admin/hotel/add" 
-            component={listHotel} />
+            exact path="/admin/hotel/list" 
+            component={()=><Listhotel handleMessage={handleMessage} />} 
+        />
         <Route 
-            render={(props) => <DefaultAction {...props} name={"🛃 Roles"} />} />
+            render={(props) => <DefaultAction {...props} name={"🏬 Hotel"} />} />
     </Switch>
   </div>
 );
+}
 
-export default Roles;
+export default hotels;

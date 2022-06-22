@@ -21,7 +21,7 @@ const LayoutAdmin = () => (
         <Route path="/admin/usuarios" component={Usuarios} />
         <Route path="/admin/vuelo" component={Vuelo} />
         <Route path="/admin/hotel" component={Hotel} />
-        <Route path="/admin/estacion" component={Vehiculo} />
+        <Route path="/admin/vehiculos" component={Vehiculo} />
         <Route component={InvalidOperation} />
     </Switch>
   </div>

@@ -21,7 +21,7 @@ const Parqueos = () => {
     <Message statemessage={statemessage} handleMessage={handleMessage}/>
     <Switch>
         <Route 
-            exact path="/admin/vuelo/list" 
+            exact path="/admin/vuelo/add" 
             component={()=><AddVuelo handleMessage={handleMessage} />} 
         />
         <Route 
@@ -29,7 +29,7 @@ const Parqueos = () => {
             component={()=><ListVuelo handleMessage={handleMessage} />} 
         />
         <Route 
-            render={(props) => <DefaultAction {...props} name={"🛃 Parqueos"} />} />
+            render={(props) => <DefaultAction {...props} name={"🛫 Aerolinea"} />} />
     </Switch>
   </div>
 );
