@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import DefaultAction from './moduleaction/DefaultAction';
-import AddUsuario from './moduleaction/Usuarios/addUsuario';
-import ListUsuario from './moduleaction/Usuarios/listUsuario';
-import UpdateUsuario from './moduleaction/Usuarios/updateUsuario';
-import Message from './Message';
-
+import DefaultAction from './modules/DefaultAction';
+import AddUsuario from './modules/Usuarios/addUsuario';
+import ListUsuario from './modules/Usuarios/listUsuario';
 
 const Usuarios = () => {
   const [statemessage ,setStatatemessage] = useState({
@@ -27,12 +24,7 @@ const Usuarios = () => {
             exact path="/admin/usuarios/add" 
             component={()=><AddUsuario handleMessage={handleMessage} />} 
           />
-          
-          <Route 
-            exact path="/admin/usuarios/update" 
-            component={()=><UpdateUsuario handleMessage={handleMessage} />} 
-          />
-
+        
           <Route 
             exact path="/admin/usuarios/list" 
             component={()=><ListUsuario handleMessage={handleMessage} />} 

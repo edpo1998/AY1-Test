@@ -2,11 +2,9 @@
 import React ,{useState}from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import DefaultAction from './moduleaction/DefaultAction';
-import ListVehiculo from './moduleaction/Vehiculo/listVehiculo';
-import AddVehiculo from './moduleaction/Vehiculo/addVehiculo';
-import UpdateVehiculo from './moduleaction/Vehiculo/updateVehiculo';
-import Message from './Message';
+import DefaultAction from './modules/DefaultAction';
+import ListVehiculo from './modules/Vehiculo/listVehiculo';
+import AddVehiculo from './modules/Vehiculo/addVehiculo';
 
 const Vehiculo = () => {
   const [statemessage ,setStatatemessage] = useState({
@@ -27,9 +25,6 @@ const Vehiculo = () => {
             exact path="/admin/vehiculos/add" 
             component={()=><AddVehiculo handleMessage={handleMessage} />} 
              />
-        <Route 
-            exact path="/admin/vehiculos/update" 
-            component={()=><UpdateVehiculo handleMessage={handleMessage} />}/>
         <Route 
             exact path="/admin/vehiculos/list" 
             component={()=><ListVehiculo handleMessage={handleMessage} />}/>

@@ -77,7 +77,7 @@ const Login = props => {
                 />
                 <input
                   name="password"
-                  className="input mt-2"
+                  className="form-control mt-2"
                   type="password"
                   placeholder="Contraseña"
                   onChange={handleInput}

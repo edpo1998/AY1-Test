@@ -5,7 +5,7 @@ import LayoutAdmin from './LayoutAdmin';
 import Header from '../../components/Header';
 import {Navigation} from 'react-minimal-side-navigation';
 // Routes
-import {sidebarItems} from "../../utils/navitems.js"
+import {sidebarItems} from "./navitems.js"
 // Styles
 import "../../assets/styles/components/Manage.scss"
 

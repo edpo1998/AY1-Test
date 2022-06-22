@@ -3,17 +3,11 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 // Modulos
-import Usuarios from './modulesadmin/Usuarios';
-import Roles from './modulesadmin/Roles';
-import Caja from './modulesadmin/Caja';
-import Parqueos from './modulesadmin/Parqueos';
-import Contactos from './modulesadmin/Contactos';
-import Conductores from './modulesadmin/Conductores';
-import Vehiculo from './modulesadmin/Vehiculo';
-import Reporte from './modulesadmin/Reporte';
-import Nivel from './modulesadmin/Nivel';
-import Sector from './modulesadmin/Sector';
-import Posicion from "./modulesadmin/Posicion"
+import Usuarios from './modulesadmin/usuarios';
+import Hotel from './modulesadmin/hotel';
+import Vuelo from './modulesadmin/vuelo';
+import Vehiculo from './modulesadmin/vehiculo';
+
 
 // Modulo de error
 import InvalidOperation from './modulesadmin/InvalidOperation';
@@ -25,16 +19,9 @@ const LayoutAdmin = () => (
   <div className="LayoutAdmin">
     <Switch>
         <Route path="/admin/usuarios" component={Usuarios} />
-        <Route path="/admin/roles" component={Roles} />
-        <Route path="/admin/caja" component={Caja} />
-        <Route path="/admin/estacion" component={Parqueos} />
-        <Route path="/admin/contactos" component={Contactos} />
-        <Route path="/admin/conductores" component={Conductores} />
-        <Route path="/admin/vehiculos" component={Vehiculo} />
-        <Route path="/admin/reportes" component={Reporte} />
-        <Route path="/admin/niveles" component={Nivel} />
-        <Route path="/admin/sectores" component={Sector} />
-        <Route path="/admin/posiciones" component={Posicion} />
+        <Route path="/admin/vuelo" component={Vuelo} />
+        <Route path="/admin/hotel" component={Hotel} />
+        <Route path="/admin/estacion" component={Vehiculo} />
         <Route component={InvalidOperation} />
     </Switch>
   </div>
